@@ -1,91 +1,54 @@
 package com.amanuelnegussie;
 
+// Create a generic class to implement a league table for a sport.
+// The class should allow teams to be added to the list, and store
+// a list of teams that belong to the league.
+//
+// Your class should have a method to print out the teams in order,
+// with the team at the top of the league printed first.
+//
+// Only teams of the same type should be added to any particular
+// instance of the league class - the program should fail to compile
+// if an attempt is made to add an incompatible team.
+
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
-public class League <T extends Sports> implements Comparable<League<T>>{
+//League carries an arrayList of teams that are part of the league
+//Teams carry an arrayList of teams that play the Sport
+//Player carries attributes of that Player it is an abstract class
+//subclasses of that Sport are made
+public class League <T extends Team> {
     String name;
-    int won = 0;
-    int lost = 0;
-    int tied = 0;
-    int played = 0;
+    private ArrayList<T> leagueArray = new ArrayList<>();
+
+    public League(ArrayList<T> leagueArray) {
+        this.leagueArray = leagueArray;
+    }
 
     public League(String name) {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    private ArrayList<T> leagueList = new ArrayList<>();
-
-
-
-    //functions/methods
-
-    public boolean addTeam (T team){
-        if (leagueList.contains(team)){
-            System.out.println("Sorry, this team " + team.getTeamName() + " has already been added.");
-            return false;
-        } else{
-            leagueList.add(team);
-            System.out.println(team.getTeamName() + " has been added to " + this.name);
-            return true;
-        }
-    }
-
-    public void matchResults (Sports opponentTeam, int ourScore, int theirScore){
-        String message;
-        if (ourScore>theirScore){
-            won++;
-            message= " beat ";
-        } else if (theirScore>ourScore){
-            lost++;
-            message= " lost to ";
+    public void addToLeague(T team){
+        if(leagueArray.contains(team)){
+            System.out.println( team.getTeamName() +
+                    " have already been added to the " + this.name + ".");
         } else {
-            tied++;
-            message = " drew with ";
+            leagueArray.add(team);
+            System.out.println(team.getTeamName() + " have been added to the " + this.name + ". ");
         }
-        played++;
-        if (opponentTeam !=null){
-            opponentTeam.matchResults(null,theirScore,ourScore);
-            System.out.println(this.name + message + opponentTeam.getTeamName());
+    }
 
+
+    public void showLeague(){
+        //Collections.sort doesn't work for some odd reason
+        Collections.sort(leagueArray);
+        for (T i: leagueArray){
+            System.out.println(i.getTeamName() + ": " + i.ranking());
         }
-
-    }
-
-    public void showLeagueList (){
-        System.out.println("_______________________");
-        System.out.println(this.name + ":");
-        System.out.println("_______________________");
-        for (T i: this.leagueList){
-            System.out.println((this.leagueList.indexOf(i) +1)+ ": " + i.getTeamName());
-        }
-        System.out.println("_______________________");
-    }
-
-    public int ranking (){
-        return (won*2)+ tied;
+        System.out.println();
     }
 
 
-
-
-    @Override
-    public int compareTo(League<T> opponentTeam) {
-
-        return Integer.compare(this.ranking(),opponentTeam.ranking());
-
-//        if (this.ranking() > opponentTeam.ranking()){
-//            return 1;
-//        } else if (this.ranking()<opponentTeam.ranking()){
-//            return -1;
-//        } else {
-//            return 0;
-//        }
-
-    }
 }
