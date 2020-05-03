@@ -1,8 +1,7 @@
 package com.amanuelnegussie;
 
-public class Baseball extends Sports {
-
-    public Baseball(String sportPlayed) {
-        super(sportPlayed);
+public class Baseball extends Sport {
+    public Baseball(String name) {
+        super(name);
     }
 }
