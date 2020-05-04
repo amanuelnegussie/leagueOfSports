@@ -21,7 +21,7 @@ import java.util.Collections;
 
 public class Team <T extends Sport> implements Comparable<Team<T>>{
 
-    String teamName;
+    private String teamName;
     int wins = 0;
     int losses=0;
     int ties= 0;
@@ -49,7 +49,7 @@ public class Team <T extends Sport> implements Comparable<Team<T>>{
 
 
     public int ranking(){
-        return wins*2+ties;
+        return wins*3+ties*2-losses;
     }
 
 
@@ -57,12 +57,12 @@ public class Team <T extends Sport> implements Comparable<Team<T>>{
 
     @Override
     public int compareTo(Team<T> o) {
-        if (this.ranking()>o.ranking()){
-            return 1;
-        } else if (this.ranking()<o.ranking()){
-            return -1;
-        } else {
-            return 0;
-        }
+        //this is so that it's alphabetically ordered
+        return this.getTeamName().compareTo(o.teamName);
+
+        //this is so that the highest number is ranked first
+        // return Integer.compare(o.ranking(),this.ranking());
     }
+
+
 }

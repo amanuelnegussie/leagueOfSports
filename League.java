@@ -14,17 +14,14 @@ package com.amanuelnegussie;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
 //League carries an arrayList of teams that are part of the league
 //Teams carry an arrayList of teams that play the Sport
 //Player carries attributes of that Player it is an abstract class
 //subclasses of that Sport are made
-public class League <T extends Team> {
-    String name;
+public class League <T extends Team>  {
+    public String name;
     private ArrayList<T> leagueArray = new ArrayList<>();
-
-    public League(ArrayList<T> leagueArray) {
-        this.leagueArray = leagueArray;
-    }
 
     public League(String name) {
         this.name = name;
@@ -41,14 +38,26 @@ public class League <T extends Team> {
     }
 
 
-    public void showLeague(){
+    public void showLeague() {
         //Collections.sort doesn't work for some odd reason
-        Collections.sort(leagueArray);
-        for (T i: leagueArray){
-            System.out.println(i.getTeamName() + ": " + i.ranking());
-        }
         System.out.println();
+        System.out.println(this.name + " Rankings:");
+        Collections.sort(leagueArray);
+
+//        for (T i : leagueArray) {
+//            System.out.println(i.getTeamName() + ": " + i.ranking());
+//        }
+
+        T energy;
+
+        for (int i=0; i<leagueArray.size(); i++){
+            energy = leagueArray.get(i);
+            System.out.println((i+1) + ": "+ energy.getTeamName() + " Ranking: " + energy.ranking());
+        }
     }
+
+
+
 
 
 }

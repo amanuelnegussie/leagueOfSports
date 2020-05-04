@@ -1,5 +1,7 @@
 package com.amanuelnegussie;
 
+import java.util.Collections;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -65,11 +67,13 @@ public class Main {
         thePatriots.matchResults(theBrowns, 34,12);
         thePatriots.matchResults(thePackers, 23,26);
         theBrowns.matchResults(theFalcons,12,56);
-        theFalcons.matchResults(thePatriots,23,23);
+        theFalcons.matchResults(thePatriots,123,23);
         theFalcons.matchResults(thePackers,123,212);
+        theFalcons.matchResults(theFalcons,120,12);
+
 
         nflLeague.showLeague();
-        System.out.println(theBrowns.compareTo(theFalcons));
+
 
 
 

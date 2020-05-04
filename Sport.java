@@ -1,7 +1,7 @@
 package com.amanuelnegussie;
 
 public abstract class Sport {
-    String name;
+    private String name;
 
     public Sport(String name) {
         this.name = name;
