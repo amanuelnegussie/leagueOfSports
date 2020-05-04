@@ -19,15 +19,15 @@ import java.util.Collections;
 //Teams carry an arrayList of teams that play the Sport
 //Player carries attributes of that Player it is an abstract class
 //subclasses of that Sport are made
-public class League <T extends Team>  {
+public class League <T extends Sport>  {
     public String name;
-    private ArrayList<T> leagueArray = new ArrayList<>();
+    private ArrayList<Team<T>> leagueArray = new ArrayList<>();
 
     public League(String name) {
         this.name = name;
     }
 
-    public void addToLeague(T team){
+    public void addToLeague(Team<T> team){
         if(leagueArray.contains(team)){
             System.out.println( team.getTeamName() +
                     " have already been added to the " + this.name + ".");
@@ -37,27 +37,16 @@ public class League <T extends Team>  {
         }
     }
 
-
     public void showLeague() {
         //Collections.sort doesn't work for some odd reason
         System.out.println();
         System.out.println(this.name + " Rankings:");
         Collections.sort(leagueArray);
 
-//        for (T i : leagueArray) {
-//            System.out.println(i.getTeamName() + ": " + i.ranking());
-//        }
-
-        T energy;
-
+        Team team;
         for (int i=0; i<leagueArray.size(); i++){
-            energy = leagueArray.get(i);
-            System.out.println((i+1) + ": "+ energy.getTeamName() + " Ranking: " + energy.ranking());
+            team = leagueArray.get(i);
+            System.out.println((i+1) + ": "+ team.getTeamName() + " Ranking: " + team.ranking());
         }
     }
-
-
-
-
-
 }

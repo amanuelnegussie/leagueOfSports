@@ -1,13 +1,6 @@
 package com.amanuelnegussie;
 
-public abstract class Sport {
-    private String name;
-
-    public Sport(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-}
+interface Sport {}
+interface Basketball extends Sport {}
+interface Football extends Sport {}
+interface Baseball extends Sport {}

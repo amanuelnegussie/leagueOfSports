@@ -44,13 +44,9 @@ public class Team <T extends Sport> implements Comparable<Team<T>>{
         }
     }
 
-
     public int ranking(){
         return wins*3+ties*2-losses;
     }
-
-
-
 
     @Override
     public int compareTo(Team<T> o) {

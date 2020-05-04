@@ -19,9 +19,9 @@ public class Main {
         //Player carries attributes of that Player it is an abstract class
         //subclasses of that Sport are made
 
-        League<Team<Basketball>> nbaLeague = new League<>("NBA League");
-        League<Team<Football>> nflLeague = new League<>("NFL League");
-        League<Team<Baseball>> mlbLeague = new League<>("MLB League");
+        League<Basketball> nbaLeague = new League<>("NBA League");
+        League<Football> nflLeague = new League<>("NFL League");
+        League<Baseball> mlbLeague = new League<>("MLB League");
 
         //Creating teams with specific sports types
         Team<Basketball> theRaptors = new Team<>("The Toronto Raptors");
@@ -38,9 +38,6 @@ public class Main {
         Team<Baseball> theCubs = new Team<>("The Chicago Cubs");
         Team<Baseball> theBlueJays = new Team<>("The Toronto Bluejays");
         Team<Baseball> theDodgers = new Team<>("The Los Angeles Dodgers");
-
-
-
 
         // type safety when adding teams of type Sport(abstract class- with subclasses each type Sport)
         nbaLeague.addToLeague(theRaptors);
@@ -69,18 +66,6 @@ public class Main {
         theFalcons.matchResults(thePackers,123,212);
         theFalcons.matchResults(theFalcons,120,12);
 
-
         nflLeague.showLeague();
-
-
-
-
-
-
-
-
-
-
-
     }
 }
