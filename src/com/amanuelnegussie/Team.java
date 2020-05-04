@@ -1,8 +1,5 @@
 package com.amanuelnegussie;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 // Create a generic class to implement a league table for a sport.
 // The class should allow teams to be added to the list, and store
 // a list of teams that belong to the league.
